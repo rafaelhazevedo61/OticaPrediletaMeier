@@ -5,6 +5,8 @@
  */
 package br.com.otica.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael
@@ -50,6 +52,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(0, 51, 255));
         jTextFieldUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldUsuario.setToolTipText("Digite o seu usuário");
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.setName(""); // NOI18N
@@ -64,6 +67,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPasswordFieldSenha.setBackground(new java.awt.Color(0, 51, 255));
         jPasswordFieldSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPasswordFieldSenha.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordFieldSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPasswordFieldSenha.setToolTipText("Digite sua senha");
         jPasswordFieldSenha.setBorder(null);
 
@@ -75,6 +79,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha.setText("Senha");
 
         jButton1.setText("Acessar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Esqueci a Senha");
 
@@ -151,6 +160,26 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1266, 689));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        //ACESSO ESTATICO
+        String usuario = jTextFieldUsuario.getText();
+        String senha = jPasswordFieldSenha.getText();
+
+        if (usuario.equals("admin") && senha.equals("admin")) {
+
+            TelaSelecaoModulo tela = new TelaSelecaoModulo();
+            tela.setVisible(true);
+            dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Erro 0x0001 - Usuário ou Senha inválidos!");
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
