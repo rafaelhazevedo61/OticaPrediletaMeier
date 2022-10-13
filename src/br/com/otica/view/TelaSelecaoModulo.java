@@ -5,6 +5,9 @@
  */
 package br.com.otica.view;
 
+import br.com.otica.view.atendimento.TelaPrincipalAtendimento;
+import br.com.otica.view.estoque.TelaPrincipalEstoque;
+import br.com.otica.view.financeiro.TelaPrincipalFinanceiro;
 import javax.swing.JOptionPane;
 
 /**
@@ -201,18 +204,30 @@ public class TelaSelecaoModulo extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
         JOptionPane.showMessageDialog(null, "Selecionado 'Módulo Financeiro'");
+
+            TelaPrincipalFinanceiro tela = new TelaPrincipalFinanceiro();
+            tela.setVisible(true);
+            dispose();
         
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         
         JOptionPane.showMessageDialog(null, "Selecionado 'Módulo Estoque'");
+
+            TelaPrincipalEstoque tela = new TelaPrincipalEstoque();
+            tela.setVisible(true);
+            dispose();
         
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         
         JOptionPane.showMessageDialog(null, "Selecionado 'Módulo Atendimento'");
+
+            TelaPrincipalAtendimento tela = new TelaPrincipalAtendimento();
+            tela.setVisible(true);
+            dispose();
         
     }//GEN-LAST:event_jLabel5MouseClicked
 

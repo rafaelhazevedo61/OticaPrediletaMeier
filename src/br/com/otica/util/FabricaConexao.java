@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class FabricaConexao {
     
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc:postgresql://localhost:5432/OticaPrediletaMeier";
+    private static final String URL_CONEXAO = "jdbc:postgresql://localhost:5432/dbOticaPrediletaMeier";
     private static final String USUARIO = "postgres";
     private static final String SENHA = "arisco2017";
     private static final String DRIVER = "org.postgresql.Driver";

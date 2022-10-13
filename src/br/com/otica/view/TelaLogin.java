@@ -5,7 +5,10 @@
  */
 package br.com.otica.view;
 
+import br.com.otica.controllers.TelaLoginController;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,11 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
+    private final TelaLoginController controller;
+
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
         initComponents();
+        controller = new TelaLoginController(this);
     }
 
     /**
@@ -167,17 +173,7 @@ public class TelaLogin extends javax.swing.JFrame {
         String usuario = jTextFieldUsuario.getText();
         String senha = jPasswordFieldSenha.getText();
 
-        if (usuario.equals("admin") && senha.equals("admin")) {
-
-            TelaSelecaoModulo tela = new TelaSelecaoModulo();
-            tela.setVisible(true);
-            dispose();
-
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Erro 0x0001 - Usuário ou Senha inválidos!");
-
-        }
+        controller.autenticarUsuarios();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -216,6 +212,23 @@ public class TelaLogin extends javax.swing.JFrame {
         });
     }
 
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
