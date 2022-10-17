@@ -5,17 +5,25 @@
  */
 package br.com.otica.view.atendimento;
 
+import br.com.otica.controllers.TelaCadastroTSOController;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Rafael
  */
 public class TelaCadastroTSO extends javax.swing.JInternalFrame {
 
+    private final TelaCadastroTSOController controller;
+
     /**
      * Creates new form TelaCadastroTSO
      */
     public TelaCadastroTSO() {
         initComponents();
+        controller = new TelaCadastroTSOController(this);
     }
 
     /**
@@ -30,7 +38,7 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldTSO = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
+        jTextFieldCPF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldMedico = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -65,9 +73,9 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaObservacao = new javax.swing.JTextArea();
         jButtonConfirmar = new javax.swing.JButton();
-        jButtonConfirmar1 = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -293,8 +301,13 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
         );
 
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarActionPerformed(evt);
+            }
+        });
 
-        jButtonConfirmar1.setText("Limpar");
+        jButtonLimpar.setText("Limpar");
 
         jLabel20.setText("Valor");
 
@@ -320,7 +333,7 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(268, 268, 268))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,8 +341,8 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(jButtonConfirmar1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(jFormattedTextField1)))
+                                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(jFormattedTextFieldValor)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(jLabel20)))
@@ -345,7 +358,7 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -356,11 +369,11 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFormattedTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -399,11 +412,15 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPertoOEEIXOActionPerformed
 
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        controller.cadastrarTSO();
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConfirmar;
-    private javax.swing.JButton jButtonConfirmar1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JFormattedTextField jFormattedTextFieldValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -425,6 +442,7 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextAreaObservacao;
     private javax.swing.JTextField jTextFieldAltura;
+    private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldDNPOD;
     private javax.swing.JTextField jTextFieldDNPOE;
     private javax.swing.JTextField jTextFieldLongeODCIL;
@@ -434,7 +452,6 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldLongeOEEIXO;
     private javax.swing.JTextField jTextFieldLongeOEESF;
     private javax.swing.JTextField jTextFieldMedico;
-    private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldPertoODCIL;
     private javax.swing.JTextField jTextFieldPertoODEIXO;
     private javax.swing.JTextField jTextFieldPertoODESF;
@@ -443,4 +460,167 @@ public class TelaCadastroTSO extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldPertoOEESF;
     private javax.swing.JTextField jTextFieldTSO;
     // End of variables declaration//GEN-END:variables
+
+    public JFormattedTextField getjFormattedTextFieldValor() {
+        return jFormattedTextFieldValor;
+    }
+
+    public void setjFormattedTextFieldValor(JFormattedTextField jFormattedTextFieldValor) {
+        this.jFormattedTextFieldValor = jFormattedTextFieldValor;
+    }
+
+    public JTextArea getjTextAreaObservacao() {
+        return jTextAreaObservacao;
+    }
+
+    public void setjTextAreaObservacao(JTextArea jTextAreaObservacao) {
+        this.jTextAreaObservacao = jTextAreaObservacao;
+    }
+
+    public JTextField getjTextFieldAltura() {
+        return jTextFieldAltura;
+    }
+
+    public void setjTextFieldAltura(JTextField jTextFieldAltura) {
+        this.jTextFieldAltura = jTextFieldAltura;
+    }
+
+    public JTextField getjTextFieldCPF() {
+        return jTextFieldCPF;
+    }
+
+    public void setjTextFieldCPF(JTextField jTextFieldCPF) {
+        this.jTextFieldCPF = jTextFieldCPF;
+    }
+
+    public JTextField getjTextFieldDNPOD() {
+        return jTextFieldDNPOD;
+    }
+
+    public void setjTextFieldDNPOD(JTextField jTextFieldDNPOD) {
+        this.jTextFieldDNPOD = jTextFieldDNPOD;
+    }
+
+    public JTextField getjTextFieldDNPOE() {
+        return jTextFieldDNPOE;
+    }
+
+    public void setjTextFieldDNPOE(JTextField jTextFieldDNPOE) {
+        this.jTextFieldDNPOE = jTextFieldDNPOE;
+    }
+
+    public JTextField getjTextFieldLongeODCIL() {
+        return jTextFieldLongeODCIL;
+    }
+
+    public void setjTextFieldLongeODCIL(JTextField jTextFieldLongeODCIL) {
+        this.jTextFieldLongeODCIL = jTextFieldLongeODCIL;
+    }
+
+    public JTextField getjTextFieldLongeODEIXO() {
+        return jTextFieldLongeODEIXO;
+    }
+
+    public void setjTextFieldLongeODEIXO(JTextField jTextFieldLongeODEIXO) {
+        this.jTextFieldLongeODEIXO = jTextFieldLongeODEIXO;
+    }
+
+    public JTextField getjTextFieldLongeODESF() {
+        return jTextFieldLongeODESF;
+    }
+
+    public void setjTextFieldLongeODESF(JTextField jTextFieldLongeODESF) {
+        this.jTextFieldLongeODESF = jTextFieldLongeODESF;
+    }
+
+    public JTextField getjTextFieldLongeOECIL() {
+        return jTextFieldLongeOECIL;
+    }
+
+    public void setjTextFieldLongeOECIL(JTextField jTextFieldLongeOECIL) {
+        this.jTextFieldLongeOECIL = jTextFieldLongeOECIL;
+    }
+
+    public JTextField getjTextFieldLongeOEEIXO() {
+        return jTextFieldLongeOEEIXO;
+    }
+
+    public void setjTextFieldLongeOEEIXO(JTextField jTextFieldLongeOEEIXO) {
+        this.jTextFieldLongeOEEIXO = jTextFieldLongeOEEIXO;
+    }
+
+    public JTextField getjTextFieldLongeOEESF() {
+        return jTextFieldLongeOEESF;
+    }
+
+    public void setjTextFieldLongeOEESF(JTextField jTextFieldLongeOEESF) {
+        this.jTextFieldLongeOEESF = jTextFieldLongeOEESF;
+    }
+
+    public JTextField getjTextFieldMedico() {
+        return jTextFieldMedico;
+    }
+
+    public void setjTextFieldMedico(JTextField jTextFieldMedico) {
+        this.jTextFieldMedico = jTextFieldMedico;
+    }
+
+    public JTextField getjTextFieldPertoODCIL() {
+        return jTextFieldPertoODCIL;
+    }
+
+    public void setjTextFieldPertoODCIL(JTextField jTextFieldPertoODCIL) {
+        this.jTextFieldPertoODCIL = jTextFieldPertoODCIL;
+    }
+
+    public JTextField getjTextFieldPertoODEIXO() {
+        return jTextFieldPertoODEIXO;
+    }
+
+    public void setjTextFieldPertoODEIXO(JTextField jTextFieldPertoODEIXO) {
+        this.jTextFieldPertoODEIXO = jTextFieldPertoODEIXO;
+    }
+
+    public JTextField getjTextFieldPertoODESF() {
+        return jTextFieldPertoODESF;
+    }
+
+    public void setjTextFieldPertoODESF(JTextField jTextFieldPertoODESF) {
+        this.jTextFieldPertoODESF = jTextFieldPertoODESF;
+    }
+
+    public JTextField getjTextFieldPertoOECIL() {
+        return jTextFieldPertoOECIL;
+    }
+
+    public void setjTextFieldPertoOECIL(JTextField jTextFieldPertoOECIL) {
+        this.jTextFieldPertoOECIL = jTextFieldPertoOECIL;
+    }
+
+    public JTextField getjTextFieldPertoOEEIXO() {
+        return jTextFieldPertoOEEIXO;
+    }
+
+    public void setjTextFieldPertoOEEIXO(JTextField jTextFieldPertoOEEIXO) {
+        this.jTextFieldPertoOEEIXO = jTextFieldPertoOEEIXO;
+    }
+
+    public JTextField getjTextFieldPertoOEESF() {
+        return jTextFieldPertoOEESF;
+    }
+
+    public void setjTextFieldPertoOEESF(JTextField jTextFieldPertoOEESF) {
+        this.jTextFieldPertoOEESF = jTextFieldPertoOEESF;
+    }
+
+    public JTextField getjTextFieldTSO() {
+        return jTextFieldTSO;
+    }
+
+    public void setjTextFieldTSO(JTextField jTextFieldTSO) {
+        this.jTextFieldTSO = jTextFieldTSO;
+    }
+
+
+    
 }
